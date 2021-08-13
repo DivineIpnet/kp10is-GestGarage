@@ -16,12 +16,6 @@ class CreatePiece extends Migration
         Schema::create('piece', function (Blueprint $table) {
             $table->id();
             $table->string('nom');
-            $table->unsignedBigInteger('voiture_id');
-            $table->foreign('voiture_id')
-                  ->references('id')
-                  ->on('voiture')
-                  ->onDelete('restrict')
-                  ->onUpdate('restrict');
             $table->timestamps();
         });
     }

@@ -17,10 +17,7 @@
                  <strong>Nom:</strong>
                  {{ $piece->nom }}
              </div>
-            <div class="form-group">
-                <strong>Voiture:</strong>
-                {{ $piece->voiture->nom }}
-            </div>
+            <
     </div>
     <a href="{{ route('piece.index')}}" class="btn btn-primary btn-lg" style="margin-left:auto; margin-right:auto; margin-top:100px;">Voir la liste</a>
 

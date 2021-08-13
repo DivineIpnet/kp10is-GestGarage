@@ -7,14 +7,12 @@
         <tr>
             <th>NO</th>
             <th>Nom</th>
-            <th>Voiture</th>
             <th>Action</th>
         </tr>
         @foreach ( $pieces as $key=> $value)
         <tr>
             <td>{{ ++$i }}</td>
             <td>{{ $value->nom }}</td>
-            <td>{{ $value->voiture_id }}</td>
             <td>
                 <form action="{{ route('piece.destroy',$value->id) }}" method="POST">
                     <a class="btn btn-info" href="{{ route('piece.show',$value->id) }}">Show</a>

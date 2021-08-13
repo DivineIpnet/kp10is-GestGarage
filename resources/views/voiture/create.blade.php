@@ -73,6 +73,18 @@
               <div class="invalid-feedback">{{ $message }}</div>
         @enderror
       </div>
+      <div class="form-group">
+        <label for="piece">Piece</label>
+        <select name="piece_id" class="form-control" id="piece">
+                <option value="">Piece en panne</option>
+            @foreach($pieces as $piece)
+                <option value="{{ $piece->id }}">{{ $piece->nom }}</option>
+            @endforeach
+        </select>
+        @error('piece_id')
+              <div class="invalid-feedback">{{ $message }}</div>
+        @enderror
+      </div>
 
       <button type="submit" class="btn btn-primary">Enregistrer</button>
     </form>

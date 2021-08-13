@@ -1,5 +1,8 @@
-@extends('template')
+@extends('admin.templatead')
 
+@section('titr')
+    <h4 id="dash">Utilisateur</h4>
+@endsection
 @section('content')
         <h2>Liste des user</h2>
 
@@ -15,9 +18,9 @@
         @foreach ( $users as $key=> $value)
         <tr>
             <td>{{ ++$i }}</td>
-            <td>{{ $value->name }}</td>
+            <td width=50>{{ $value->name }}</td>
             <td>{{ $value->email}}</td>
-            <td>{{ $value->password }}</td>
+            <td style="word-break: break-all;">{{ $value->password }}</td>
             <td>{{ $value->role }}</td>
             <td>
                 <form action="{{ route('users.destroy',$value->id) }}" method="POST">

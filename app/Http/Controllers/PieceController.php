@@ -6,7 +6,6 @@ use App\Models\Piece;
 use Illuminate\Http\Request;
 use DB;
 Use Auth;
-use App\Models\Voiture;
 
 class PieceController extends Controller
 {
@@ -31,8 +30,7 @@ class PieceController extends Controller
      */
     public function create()
     {
-        $voitures = Voiture::all();
-        return view('piece.create', compact('voitures'));
+        return view('piece.create');
     }
 
     /**
@@ -45,12 +43,10 @@ class PieceController extends Controller
     {
        $request->validate([
             'nom' => ['required'],
-            'voiture_id' => ['required']
         ]);
 
       $piece = new Piece;
       $piece->nom = $request->nom;
-      $piece->voiture_id = $request->voiture_id;
       $piece->save();
 
         return redirect()->route('piece.index')
@@ -77,8 +73,7 @@ class PieceController extends Controller
      */
     public function edit(Piece $piece)
     {
-        $voitures = Voiture::all();
-        return view('piece.edit', compact('piece', 'voitures'));
+        return view('piece.edit', compact('piece'));
     }
 
     /**
@@ -92,14 +87,11 @@ class PieceController extends Controller
     {
                   $request->validate([
                             'nom' => 'required',
-                            'voiture_id' => 'required',
-
                         ]);
 
                   DB::table('piece') ->where('id', $piece->id)
                                      ->update([
                                                'nom'=> $request->nom,
-                                               'voiture_id'=> $request->voiture_id
 
                                                ]);
 

@@ -10,6 +10,7 @@ Use Auth;
 use App\Models\TypeVoiture;
 use App\Models\Proprietaire;
 use App\Models\Marque;
+use App\Models\Piece;
 
 class VoitureController extends Controller
 {
@@ -58,7 +59,8 @@ $this->middleware('auth')->except('home');
         $typevoitures = TypeVoiture::all();
         $proprietaires = Proprietaire::all();
         $marques = Marque::all();
-        return view('voiture.create', compact('typevoitures', 'proprietaires', 'marques'));
+        $pieces = Piece::all();
+        return view('voiture.create', compact('typevoitures', 'proprietaires', 'marques', 'pieces'));
     }
 
     /**
@@ -76,6 +78,7 @@ $this->middleware('auth')->except('home');
             'type_voiture_id' => 'required',
             'marque_id' => 'required',
             'proprietaire_id' => ['required'],
+            'piece_id' => ['required'],
         ]);
       //Storage::makeDirectory('public', 'upload');
 
@@ -90,6 +93,7 @@ $this->middleware('auth')->except('home');
       $voiture->type_voiture_id = $request->type_voiture_id;
       $voiture->marque_id = $request->marque_id;
       $voiture->proprietaire_id = $request->proprietaire_id;
+      $voiture->piece_id = $request->piece_id;
 
       $voiture->save();
 
@@ -120,7 +124,8 @@ $this->middleware('auth')->except('home');
         $typevoitures = TypeVoiture::all();
         $proprietaires = Proprietaire::all();
         $marques = Marque::all();
-        return view('voiture.edit', compact('voiture','typevoitures', 'proprietaires', 'marques'));
+        $pieces = Piece::all();
+        return view('voiture.edit', compact('voiture','typevoitures', 'proprietaires', 'marques', 'pieces'));
 
     }
 
@@ -141,6 +146,7 @@ $this->middleware('auth')->except('home');
                     'type_voiture_id' => 'required',
                     'marque_id' => 'required',
                     'proprietaire_id' => 'required',
+                    'piece_id' => 'required',
                 ]);
             $image = $request->image;
         if($request->has('update_image')){
@@ -154,7 +160,8 @@ $this->middleware('auth')->except('home');
                                                  'status'=> $request->status,
                                                  'type_voiture_id'=>$request->type_voiture_id,
                                                  'marque_id'=>$request->marque_id,
-                                                 'proprietaire_id'=>$request->proprietaire_id
+                                                 'proprietaire_id'=>$request->proprietaire_id,
+                                                 'piece_id'=>$request->piece_id
                                                   ]);
 
           return redirect()->route('voiture.index')

@@ -12,11 +12,11 @@ class Piece extends Model
      protected $table = 'piece';
 
         protected $fillable = [
-            'nom', 'voiture_id'
+            'nom'
         ];
 
-   public function voiture()
+   public function voitures()
     {
-        return $this->belongsTo(Voiture::class);
+        return $this->hasMany(Voiture::class);
     }
 }

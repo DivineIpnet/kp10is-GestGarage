@@ -15,7 +15,7 @@ class Voiture extends Model
     protected $table = 'voiture';
 
     protected $fillable = [
-        'image', 'matricule', 'status', 'type_voiture_id', 'marque_id', 'proprietaire_id'
+        'image', 'matricule', 'status', 'type_voiture_id', 'marque_id', 'proprietaire_id', 'piece_id'
     ];
 
     public function typevoiture()
@@ -33,8 +33,8 @@ class Voiture extends Model
         return $this->belongsTo(Marque::class);
     }
 
-    public function pieces()
+    public function piece()
     {
-        return $this->hasMany(Piece::class);
+        return $this->belongsTo(Piece::class);
     }
 }

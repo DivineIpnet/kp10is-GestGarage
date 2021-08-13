@@ -32,6 +32,10 @@
                  {{ $voiture->proprietaire->nom }}
              </div>
              <div class="form-group">
+                 <strong>Piece:</strong>
+                 {{ $voiture->piece->nom }}
+             </div>
+             <div class="form-group">
                  <strong>Status:</strong>
                  {{ $voiture->status }}
              </div>

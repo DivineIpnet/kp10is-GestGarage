@@ -8,6 +8,7 @@ use App\Http\Controllers\ProprietaireController;
 use App\Http\Controllers\TypeVoitureController;
 use App\Http\Controllers\PieceController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\ChartController;
 
 
 /*
@@ -55,6 +56,13 @@ Route::get('/user', function() {
     return view('user.create');
 })->name('adduser');
 
-Route::group(['middleware' => ['admin']], function () {
-    Route::get('admin', 'HomeController@admin')->name('admin');
-});
+
+
+/*
+Route::get('/admin', function() {
+    return view('admin.home');
+})->name('admin');
+ */
+
+
+Route::get('/admin', [ChartController::class, 'bar'])->name('admin');

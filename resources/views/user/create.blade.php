@@ -1,5 +1,8 @@
-@extends('template')
+@extends('admin.templatead')
 
+@section('titr')
+    <h4 id="dash">Utilisateur</h4>
+@endsection
 @section('content')
 <div  style="height: 400px; width: 80%; margin-left:auto; margin-right:auto;">
     <h2>Ajouter un utilisateur</h2>

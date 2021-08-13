@@ -22,20 +22,27 @@ class CreateVoiture extends Migration
                        $table->foreign('type_voiture_id')
                              ->references('id')
                              ->on('typevoiture')
-                             ->onDelete('restrict')
+                             ->onDelete('cascade')
                              ->onUpdate('cascade');;
                        $table->unsignedBigInteger('marque_id');
                        $table->foreign('marque_id')
                              ->references('id')
                              ->on('marque')
-                             ->onDelete('restrict')
+                             ->onDelete('cascade')
                              ->onUpdate('cascade');
                        $table->unsignedBigInteger('proprietaire_id');
                        $table->foreign('proprietaire_id')
                              ->references('id')
                              ->on('proprietaire')
-                             ->onDelete('restrict')
+                             ->onDelete('cascade')
                              ->onUpdate('cascade');
+                       $table->unsignedBigInteger('piece_id');
+                       $table->foreign('piece_id')
+                             ->references('id')
+                             ->on('piece')
+                             ->onDelete('cascade')
+                             ->onUpdate('cascade');
+
                        $table->timestamps();
 
                    });
